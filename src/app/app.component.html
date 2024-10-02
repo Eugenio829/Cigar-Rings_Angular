@@ -1,65 +1,582 @@
-<div class="sidebar">
-    <div class="logo-container">
+<style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1c1c1c;
+            color: #fff;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #2c2c2c;
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+        }
+
+        .logo img {
+            width: 100px;
+            height: auto;
+        }
+
+        .profile {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .profile img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 15px 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li a i {
+            margin-right: 10px;
+        }
+
+        /* Submenu Styles */
+        .submenu {
+            display: none;
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .submenu li {
+            margin: 10px 0;
+        }
+
+        .submenu li a {
+            color: #ccc;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .header-item {
+            background-color: #4c4c4c;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Chart Styles */
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .chart {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 5px;
+            flex: 1 1 calc(33.333% - 40px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .chart-title {
+            margin-bottom: 10px;
+        }
+
+        /* Form Styles */
+        .product-form {
+            display: none;
+            background-color: #4c4c4c;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .product-form input, .product-form button, .product-form select {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+        }
+
+        /* Inventory Styles */
+        .inventory {
+            display: none;
+            background-color: #4c4c4c;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .inventory table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .inventory th, .inventory td {
+            padding: 10px;
+            border: 1px solid #333;
+        }
+
+        .inventory th {
+            background-color: #555;
+        }
+
+        /* Client List Styles */
+        .client-list {
+            display: none;
+            background-color: #4c4c4c;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .client-list table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .client-list th, .client-list td {
+            padding: 10px;
+            border: 1px solid #333;
+        }
+
+        .client-list th {
+            background-color: #555;
+        }
+
+        /* Register Form Styles */
+        .register-form {
+            display: none;
+            background-color: #4c4c4c;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .register-form input, .register-form button, .register-form select {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+        }
+    </style>
+
+<body>
+    <div class="sidebar">
         <div class="logo">
-            <img src="img/Cigar-Rings-Logo.png" alt="Cigar Rings Logo">
+            <img src="logo.png" alt="Logo">
         </div>
+        <div class="profile">
+            <img src="profile.jpg" alt="Profile Picture">
+            <p>jimenezeugenio</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#"><i class="icon-home"></i> Home</a></li>
+                <li>
+                    <a href="#" id="almacen-link"><i class="icon-warehouse"></i> Almacen</a>
+                    <ul class="submenu" id="almacen-submenu">
+                        <li><a href="#" id="almacen-uno-link">Almacen Sobrante</a></li>
+                        <li><a href="#" id="almacen-dos-link">Almacen Climatizado</a></li>
+                    </ul>
+                </li>
+                
+                <li><a href="#"><i class="icon-stock"></i> Stock Productos</a></li>
+                <li><a href="#"><i class="icon-label"></i> Etiqueta</a></li>
+                <li><a href="#" id="clientes-link"><i class="icon-client"></i> Cliente</a></li>
+                <li><a href="#" id="register-link"><i class="icon-register"></i> Registrar Usuario</a></li>
+            </ul>
+        </nav>
     </div>
-    <ul class="menu">
-        <li class="menu-item active">
-            <img src="img/icon/person.png" alt="User Icon">
-            <h2>Euenio Jimenez</h2>
-            <img src="img/icon/keyboard.png" alt="Keyboard Icon">
-        </li>
-        <li class="menu-item">
-            <img src="img/icon/Home.png" alt="Home Icon">
-            Home
-        </li>
-        <li class="menu-item">
-            <img src="img/icon/contacts.png" alt="Contacts Icon">
-            Contactos
-        </li>
-        <li class="menu-item">
-            <img src="img/icon/attach.png" alt="Purchases Icon">
-            Compras
-        </li>
-        <li class="menu-item">
-            <img src="img/icon/shopping.png" alt="Sales Icon">
-            Ventas
-        </li>
-        <li class="menu-item">
-            <img src="img/icon/inventory.png" alt="Inventory Icon">
-            Inventario
-        </li>
-        <li class="menu-item">
-            <img src="img/icon/calculadora.png" alt="Accounting Icon">
-            Contabilidad
-        </li>
-        <li class="menu-item">
-            <img src="img/icon/finance.png" alt="Analytics Icon">
-            Analítica
-        </li>
-        <li class="menu-item">
-            <img src="img/icon/settings.png" alt="Settings Icon">
-            Configuración 
-        </li>
-    </ul>
+    <div class="main-content">
+        <div class="header">
+            <div class="header-item" id="ingreso-btn">INGRESO</div>
+            <div class="header-item" id="salida-btn">SALIDA</div>
+            <div class="header-item" id="inventario-btn">INVENTARIO</div>
+        </div>
+        <div class="content">
+        <!-- Agregar un contenedor para el gráfico de inventario -->
+<div class="chart" id="inventory-chart">
+    <h3>Gráfico de Inventario</h3>
+    <canvas id="inventory-chart-canvas"></canvas>
 </div>
-<div class="container">
-    <div class="section">
-        <h2>Productos <a href="#" class="link">Ir a productos</a></h2>
-        <div class="card">
-            <div class="card-content">
-                <p>Unidades de producto</p>
-                <h3>216</h3>
+
+<!-- Agregar un contenedor para el gráfico de clientes -->
+<div class="chart" id="client-chart">
+    <h3>Gráfico de Clientes</h3>
+    <canvas id="client-chart-canvas"></canvas>
+</div>
+            <div class="chart">
+                <div class="chart-title">Proceso de la semana</div>
             </div>
-            <div class="card-content">
-                <p>Valor del stock</p>
-                <h3>8.924.367.456,00 DOP</h3>
+            <div class="chart">
+                <div class="chart-title">Redimiento</div>
             </div>
-            <div class="card-content">
-                <p>Coste medio</p>
-                <h3>41.316.516,00 DOP</h3>
+            <div class="chart">
+                <div class="chart-title">Home</div>
             </div>
         </div>
+        <div class="product-form" id="product-form">
+            <h2>Agregar Producto</h2>
+            <input type="text" id="product-name" placeholder="Nombre del Producto">
+            <input type="number" id="product-quantity" placeholder="Cantidad">
+            <input type="text" id="product-of" placeholder="OF">
+            <input type="text" id="product-t" placeholder="T">
+            <input type="text" id="product-c" placeholder="C">
+            <input type="text" id="product-f" placeholder="F">
+            <input type="text" id="product-description" placeholder="Descripción">
+            <input type="text" id="product-status" placeholder="Estado">
+            <input type="text" id="product-client" placeholder="Cliente">
+            <input type="date" id="product-date" placeholder="Fecha">
+            <select id="warehouse-select">
+                <option value="">Seleccione un Almacén</option>
+                <option value="Almacen Uno">Almacen Uno</option>
+                <option value="Almacen Dos">Almacen Dos</option>
+            </select>
+            <button id="add-product-btn">Agregar Producto</button>
+        </div>
+        <div class="inventory" id="inventory">
+            <h2>Inventario</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                        <th>OF</th>
+                        <th>T</th>
+                        <th>C</th>
+                        <th>F</th>
+                        <th>Descripción</th>
+                        <th>Estado</th>
+                        <th>Cliente</th>
+                        <th>Almacén</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody id="inventory-list"></tbody>
+            </table>
+        </div>
+        <div class="client-list" id="client-list">
+            <h2>Lista de Clientes</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                    </tr>
+                </thead>
+                <tbody id="client-list-body"></tbody>
+            </table>
+        </div>
+        <div class="register-form" id="register-form">
+            <h2>Registrar Usuario</h2>
+            <input type="text" id="register-username" placeholder="Nombre de Usuario">
+            <input type="password" id="register-password" placeholder="Contraseña">
+            <select id="register-permissions">
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+            </select>
+            <button id="register-btn">Registrar</button>
+        </div>
     </div>
-</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if the user is authenticated
+            if (localStorage.getItem('authenticated') !== 'true') {
+                window.location.href = 'login.html';
+            }
+
+            var products = [];
+            var users = JSON.parse(localStorage.getItem('users')) || [];
+
+            document.getElementById('almacen-link').addEventListener('click', function(event) {
+                event.preventDefault();
+                var submenu = document.getElementById('almacen-submenu');
+                if (submenu.style.display === 'none' || submenu.style.display === '') {
+                    submenu.style.display = 'block';
+                } else {
+                    submenu.style.display = 'none';
+                }
+            });
+
+            document.getElementById('ingreso-btn').addEventListener('click', function() {
+                var form = document.getElementById('product-form');
+                var inventory = document.getElementById('inventory');
+                var clientList = document.getElementById('client-list');
+                var registerForm = document.getElementById('register-form');
+                inventory.style.display = 'none';
+                clientList.style.display = 'none';
+                registerForm.style.display = 'none';
+                if (form.style.display === 'none' || form.style.display === '') {
+                    form.style.display = 'block';
+                } else {
+                    form.style.display = 'none';
+                }
+            });
+
+            document.getElementById('inventario-btn').addEventListener('click', function() {
+                var inventory = document.getElementById('inventory');
+                var form = document.getElementById('product-form');
+                var clientList = document.getElementById('client-list');
+                var registerForm = document.getElementById('register-form');
+                form.style.display = 'none';
+                clientList.style.display = 'none';
+                registerForm.style.display = 'none';
+                if (inventory.style.display === 'none' || inventory.style.display === '') {
+                    inventory.style.display = 'block';
+                    updateInventory();
+                } else {
+                    inventory.style.display = 'none';
+                }
+            });
+
+            document.getElementById('clientes-link').addEventListener('click', function(event) {
+                event.preventDefault();
+                var clientList = document.getElementById('client-list');
+                var form = document.getElementById('product-form');
+                var inventory = document.getElementById('inventory');
+                var registerForm = document.getElementById('register-form');
+                form.style.display = 'none';
+                inventory.style.display = 'none';
+                registerForm.style.display = 'none';
+                if (clientList.style.display === 'none' || clientList.style.display === '') {
+                    clientList.style.display = 'block';
+                    updateClientList();
+                } else {
+                    clientList.style.display = 'none';
+                }
+            });
+
+            document.getElementById('register-link').addEventListener('click', function(event) {
+                event.preventDefault();
+                var registerForm = document.getElementById('register-form');
+                var form = document.getElementById('product-form');
+                var inventory = document.getElementById('inventory');
+                var clientList = document.getElementById('client-list');
+                form.style.display = 'none';
+                inventory.style.display = 'none';
+                clientList.style.display = 'none';
+                if (registerForm.style.display === 'none' || registerForm.style.display === '') {
+                    registerForm.style.display = 'block';
+                } else {
+                    registerForm.style.display = 'none';
+                }
+            });
+
+            document.getElementById('add-product-btn').addEventListener('click', function() {
+                var productName = document.getElementById('product-name').value;
+                var productQuantity = document.getElementById('product-quantity').value;
+                var productOf = document.getElementById('product-of').value;
+                var productT = document.getElementById('product-t').value;
+                var productC = document.getElementById('product-c').value;
+                var productF = document.getElementById('product-f').value;
+                var productDescription = document.getElementById('product-description').value;
+                var productStatus = document.getElementById('product-status').value;
+                var productClient = document.getElementById('product-client').value;
+                var productDate = document.getElementById('product-date').value;
+                var warehouse = document.getElementById('warehouse-select').value;
+
+                if (productName && productQuantity && warehouse) {
+                    products.push({ 
+                        name: productName, 
+                        quantity: productQuantity, 
+                        of: productOf, 
+                        t: productT, 
+                        c: productC, 
+                        f: productF, 
+                        description: productDescription, 
+                        status: productStatus, 
+                        client: productClient, 
+                        date: productDate, 
+                        warehouse: warehouse 
+                    });
+                    alert('Producto agregado: ' + productName + ' - Cantidad: ' + productQuantity + ' - Almacén: ' + warehouse);
+                    document.getElementById('product-name').value = '';
+                    document.getElementById('product-quantity').value = '';
+                    document.getElementById('product-of').value = '';
+                    document.getElementById('product-t').value = '';
+                    document.getElementById('product-c').value = '';
+                    document.getElementById('product-f').value = '';
+                    document.getElementById('product-description').value = '';
+                    document.getElementById('product-status').value = '';
+                    document.getElementById('product-client').value = '';
+                    document.getElementById('product-date').value = '';
+                    document.getElementById('warehouse-select').value = '';
+                    document.getElementById('product-form').style.display = 'none';
+                } else {
+                    alert('Por favor, complete todos los campos.');
+                }
+            });
+
+            document.getElementById('almacen-uno-link').addEventListener('click', function(event) {
+                event.preventDefault();
+                var inventory = document.getElementById('inventory');
+                var form = document.getElementById('product-form');
+                var clientList = document.getElementById('client-list');
+                var registerForm = document.getElementById('register-form');
+                form.style.display = 'none';
+                clientList.style.display = 'none';
+                registerForm.style.display = 'none';
+                if (inventory.style.display === 'none' || inventory.style.display === '') {
+                    inventory.style.display = 'block';
+                    updateInventory('Almacen Uno');
+                } else {
+                    inventory.style.display = 'none';
+                }
+            });
+
+            document.getElementById('almacen-dos-link').addEventListener('click', function(event) {
+                event.preventDefault();
+                var inventory = document.getElementById('inventory');
+                var form = document.getElementById('product-form');
+                var clientList = document.getElementById('client-list');
+                var registerForm = document.getElementById('register-form');
+                form.style.display = 'none';
+                clientList.style.display = 'none';
+                registerForm.style.display = 'none';
+                if (inventory.style.display === 'none' || inventory.style.display === '') {
+                    inventory.style.display = 'block';
+                    updateInventory('Almacen Dos');
+                } else {
+                    inventory.style.display = 'none';
+                }
+            });
+
+            document.getElementById('register-btn').addEventListener('click', function() {
+                var username = document.getElementById('register-username').value;
+                var password = document.getElementById('register-password').value;
+                var permissions = document.getElementById('register-permissions').value;
+
+                if (username && password && permissions) {
+                    users.push({ username: username, password: password, permissions: permissions });
+                    localStorage.setItem('users', JSON.stringify(users));
+                    alert('Usuario registrado: ' + username);
+                    document.getElementById('register-username').value = '';
+                    document.getElementById('register-password').value = '';
+                    document.getElementById('register-permissions').value = 'user';
+                    document.getElementById('register-form').style.display = 'none';
+                } else {
+                    alert('Por favor, complete todos los campos.');
+                }
+            });
+
+            function updateInventory(warehouseFilter = null) {
+                var inventoryList = document.getElementById('inventory-list');
+                inventoryList.innerHTML = '';
+              products.forEach(function(product) {
+                  if (!warehouseFilter || product.warehouse === warehouseFilter) {
+                      var tr = document.createElement('tr');
+                      tr.innerHTML = `
+                          <td>${product.name}</td>
+                          <td>${product.quantity}</td>
+                          <td>${product.of}</td>
+                          <td>${product.t}</td>
+                          <td>${product.c}</td>
+                          <td>${product.f}</td>
+                          <td>${product.description}</td>
+                          <td>${product.status}</td>
+                          <td>${product.client}</td>
+                          <td>${product.warehouse}</td>
+                          <td>${product.date}</td>
+                      `;
+                      inventoryList.appendChild(tr);
+                  }
+              });
+}document.getElementById('register-btn').addEventListener('click', function() {
+    var username = document.getElementById('register-username').value;
+    var password = document.getElementById('register-password').value;
+    var permissions = document.getElementById('register-permissions').value;
+
+    if (username && password && permissions) {
+        users.push({ username: username, password: password, permissions: permissions });
+        localStorage.setItem('users', JSON.stringify(users));
+        alert('Usuario registrado: ' + username);
+        document.getElementById('register-username').value = '';
+        document.getElementById('register-password').value = '';
+        document.getElementById('register-permissions').value = 'user';
+        document.getElementById('register-form').style.display = 'none';
+
+        // Aquí puedes agregar lógica para actualizar la interfaz según los permisos del usuario
+        if (permissions === 'admin') {
+            // Mostrar secciones adicionales para administradores
+        } else {
+            // Mostrar solo secciones básicas para usuarios regulares
+        }
+    } else {
+        alert('Por favor, complete todos los campos.');
+    }
+});
+
+// Obtener datos para el gráfico de inventario (ejemplo)
+const inventoryData = {
+    labels: ['Producto A', 'Producto B', 'Producto C'],
+    data: [20, 30, 15]
+};
+
+// Configurar el gráfico de inventario
+const inventoryChartCanvas = document.getElementById('inventory-chart-canvas').getContext('2d');
+const inventoryChart = new Chart(inventoryChartCanvas, {
+    type: 'bar',
+    data: {
+        labels: inventoryData.labels,
+        datasets: [{
+            label: 'Cantidad',
+            data: inventoryData.data,
+            backgroundColor: 'rgba(54, 162, 235, 0.6)'
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+// Obtener datos para el gráfico de clientes (ejemplo)
+const clientData = {
+    labels: ['Cliente A', 'Cliente B', 'Cliente C'],
+    data: [10, 5, 8]
+};
+
+// Configurar el gráfico de clientes
+const clientChartCanvas = document.getElementById('client-chart-canvas').getContext('2d');
+const clientChart = new Chart(clientChartCanvas, {
+    type: 'pie',
+    data: {
+        labels: clientData.labels,
+        datasets: [{
+            data: clientData.data,
+            backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)']
+        }]
+    }
+});
+})
+        
+</script>
